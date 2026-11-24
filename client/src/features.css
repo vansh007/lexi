@@ -1,0 +1,104 @@
+/* Styles for the reading features: library, progress, themes, side panel, recap, flashcards.
+   Imported after styles.css so it can refine it. */
+
+.reader { position: relative; }
+.bar { flex-wrap: wrap; row-gap: 8px; }
+
+/* ---- Progress bar under the top bar ---- */
+.progress { height: 4px; background: var(--line); flex: none; }
+.progress i { display: block; height: 100%; background: var(--yellow); transition: width .25s ease; }
+
+/* ---- Top bar extras ---- */
+.pagejump { display: flex; align-items: center; gap: 6px; color: var(--text-soft); }
+.pagejump input {
+  width: 4.2ch; min-width: 52px; text-align: center; background: var(--desk); color: var(--text);
+  border: 1.5px solid var(--muted); border-radius: 6px; padding: 5px 4px; font: inherit;
+}
+.pagejump input::placeholder { color: var(--text); opacity: 1; }
+.goal { display: flex; align-items: center; gap: 4px; color: var(--text-soft); font-size: 14px; }
+.goal select { background: var(--desk); color: var(--text); border: 1.5px solid var(--muted); border-radius: 6px; padding: 3px 4px; font: inherit; }
+.goal__streak { margin-left: 8px; color: var(--jade-text); font-weight: 600; }
+
+/* ---- Library shelf on the landing page ---- */
+.hero__stats { margin-top: 14px; color: var(--jade-text); font-weight: 500; }
+.shelf { grid-column: 1 / -1; border-top: 1.5px solid var(--line); padding-top: 24px; }
+.shelf__title { font-family: var(--display); font-weight: 800; font-size: 26px; margin: 0 0 14px; letter-spacing: -0.02em; }
+.shelf__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.book { background: var(--panel); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.book:hover { border-color: var(--orange); }
+.book__open { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 0; margin-bottom: 8px; }
+.book__name { display: block; font-family: var(--display); font-weight: 700; font-size: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.book__meta { display: block; color: var(--text-soft); font-size: 14px; margin: 2px 0 10px; }
+.book__bar { display: block; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.book__bar i { display: block; height: 100%; background: var(--orange); }
+
+/* ---- Reading themes ---- */
+.pdf-page--blank { background: var(--panel); }
+.theme-sepia .pdf-page canvas { filter: sepia(.55) brightness(.96); }
+.theme-sepia .pdf-page { background: #f1e6cf; }
+.theme-night .pdf-page canvas { filter: invert(.9) hue-rotate(180deg); }
+.theme-night .pdf-page { background: #161616; }
+
+.docx--sepia { background: #f1e6cf; color: #3b2f20; }
+.docx--night { background: #181818; color: #dcdcdc; }
+.docx--night ::selection { background: var(--yellow); color: #1a1a1a; }
+.docx--night td, .docx--night th { border-color: #444; }
+
+/* ---- Side panel ---- */
+.sidepanel {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 100vw); z-index: 60;
+  display: flex; flex-direction: column; background: var(--panel); border-left: 2px solid var(--orange);
+  box-shadow: -12px 0 30px rgba(0,0,0,.5);
+}
+.sidepanel__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.sidepanel__head .seg { margin: 0; }
+.sidepanel__body { flex: 1; overflow: auto; padding: 8px 18px 28px; }
+.sidepanel .status { text-align: left; }
+
+.toc, .hits { list-style: none; margin: 0; padding: 0; }
+.toc button, .hits button {
+  display: flex; justify-content: space-between; gap: 12px; width: 100%; text-align: left;
+  border: 0; background: none; padding: 9px 6px; border-radius: 6px; font-family: var(--read); font-size: 16px;
+}
+.toc button:hover, .hits button:hover { background: var(--raised); }
+.toc__page { color: var(--text-soft); font-family: var(--ui); font-size: 13px; flex: none; }
+.hits button { flex-direction: column; gap: 2px; }
+.hits__page { color: var(--yellow); font-family: var(--ui); font-size: 13px; font-weight: 600; }
+.hits__snip { color: var(--text-soft); font-size: 15px; line-height: 1.4; }
+.search { display: flex; gap: 8px; margin: 10px 0; }
+.search input { flex: 1; min-width: 0; background: var(--desk); color: var(--text); border: 1.5px solid var(--muted); border-radius: 8px; padding: 8px 10px; font: inherit; }
+
+.saved__head { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+.saved__head h3 { font-family: var(--display); font-weight: 800; margin: 0; font-size: 19px; }
+.passage { font-family: var(--read); font-style: italic; line-height: 1.5; }
+
+/* ---- Flashcards ---- */
+.flash { text-align: center; padding: 28px 8px; display: grid; gap: 14px; justify-items: center; }
+.flash__word { font-family: var(--display); font-weight: 800; font-size: 40px; margin: 6px 0; color: #1a1a1a; background: var(--yellow); padding: 0 14px; }
+.flash__meaning { font-family: var(--read); font-size: 19px; line-height: 1.5; margin: 0; }
+.flash__ctx { font-family: var(--read); font-style: italic; color: var(--text-soft); margin: 0; }
+.flash__done { font-family: var(--display); font-weight: 800; font-size: 24px; }
+.flash__exit { margin-top: 10px; }
+
+/* ---- Recap modal ---- */
+.modal { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.6); display: grid; place-items: center; padding: 16px; }
+.modal__card {
+  width: min(560px, 100%); max-height: 86vh; overflow: auto; background: var(--panel);
+  border: 1.5px solid var(--line); border-top: 4px solid var(--orange); border-radius: 12px; padding: 20px 24px 24px;
+  font-family: var(--read); line-height: 1.55;
+}
+.modal__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.modal__head h2 { font-family: var(--display); font-weight: 800; font-size: 24px; margin: 0; letter-spacing: -0.02em; }
+.modal h3 { font-family: var(--display); font-size: 18px; margin: 22px 0 8px; }
+.quiz { padding-left: 22px; display: grid; gap: 16px; }
+.quiz p { margin: 0 0 8px; }
+.quiz__a { font-style: normal; }
+.modal .btn { font-family: var(--ui); }
+.modal .status { text-align: left; }
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 90;
+  background: var(--jade); color: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5); max-width: calc(100vw - 32px);
+}

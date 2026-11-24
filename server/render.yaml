@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: lexi-server
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      # Add ONE of the following in Render's dashboard (Environment tab):
+      # GEMINI_API_KEY      — for Google Gemini
+      # ANTHROPIC_API_KEY   — for Anthropic Claude
+      # OPENAI_API_KEY      — for OpenAI
